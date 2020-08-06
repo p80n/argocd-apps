@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/whitelist-source-range: "192.168.0.0/24"
+  name: workout
+spec:
+  rules:
+  - host: workout.p80n.me
+    http:
+      paths:
+      - backend:
+          serviceName: workout
+          servicePort: 80
+        path: /
+  tls:
+  - hosts:
+    - workout.p80n.me
+    secretName: workout-cert

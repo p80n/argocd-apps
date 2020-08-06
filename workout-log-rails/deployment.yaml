@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workout
+spec:
+  selector:
+    matchLabels:
+      app: workout
+  serviceName: workout
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: workout
+    spec:
+      dnsConfig:
+        options:
+        - name: ndots
+          value: "1"
+      initContainers:
+      - name: workout-init
+        image: workout:latest
+        command: ['rm','-f','/app/tmp/pids/server.pid']
+        imagePullPolicy: IfNotPresent 
+      containers:
+      - name: workout
+        image: workout:latest
+        imagePullPolicy: IfNotPresent 
+        livenessProbe:
+         httpGet:
+           path: /
+           port: 3000
+        env:
+        - name: RAILS_ENV
+          value: development
+        resources:
+          requests:
+            memory: 256Mi
+        ports:
+        - containerPort: 3000
+          name: rails-dev
