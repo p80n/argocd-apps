@@ -6,7 +6,6 @@ spec:
   selector:
     matchLabels:
       app: workout
-  serviceName: workout
   replicas: 1
   template:
     metadata:
