@@ -1,17 +1,10 @@
 replicaCount: 1
 
-githubSecret:
-dockerUser:
-dockerToken:
-
 image:
   repository: p80n/build-tomo-js
   pullPolicy: IfNotPresent
   tag: "latest"
 
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
 
 serviceAccount:
   create: true
@@ -45,21 +38,18 @@ ingress:
     nginx.ingress.kubernetes.io/limit-connections: "5"
     nginx.ingress.kubernetes.io/limit-rpm: "10"
   hosts:
-    - host:
+    - host: build-tomo.p80n.me
       paths:
       - /
   tls:
    - secretName: tls-cert
      hosts:
-       -
+       - build-tomo.p80n.me
 
 resources:
   limits:
     cpu: 200m
     memory: 1Gi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
 
 autoscaling:
   enabled: false
