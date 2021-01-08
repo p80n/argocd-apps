@@ -1,10 +1,2 @@
-apiVersion: v2
-name: build-tomo
+name: build-tomo-wrapper
 description: hack chart for ArgoCD
-type: application
-version: 0.1.0
-appVersion: 0.0.1
-dependencies:
-  - name: build-tomo
-    version: 0.1.0
-    repository: https://p80n.github.io/build-tomo-helm
