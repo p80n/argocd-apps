@@ -50,10 +50,3 @@ resources:
   limits:
     cpu: 200m
     memory: 1Gi
-
-nodeSelector:
-  kubernetes.io/hostname:
-
-tolerations: []
-
-affinity: {}
