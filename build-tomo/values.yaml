@@ -3,7 +3,7 @@ build-tomo:
   replicaCount: 1
 
   image:
-    repository: p80n/build-tomo-js
+    repository: p80n/build-tomo-server
     pullPolicy: IfNotPresent
     tag: "latest"
 
@@ -29,7 +29,7 @@ build-tomo:
 
   service:
     type: ClusterIP
-    port: 3000
+    port: 8000
 
   ingress:
     enabled: true
