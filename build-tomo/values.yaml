@@ -1,5 +1,13 @@
 build-tomo:
-  githubSecret: vault:secret/data/build-tomo#GITHUB_WEBHOOK_SECRET
+
+  credentials:
+    environment:
+      githubSecret: vault:external/data/github#secret
+      dockerToken: vault:external/data/docker#token
+      dockerUser: p80n
+    secret:
+    secretRef:
+
 
   replicaCount: 1
 
@@ -14,7 +22,8 @@ build-tomo:
     annotations: {}
     name: ""
 
-  podAnnotations: {}
+  podAnnotations:
+    vault.security.banzaicloud.io/vault-addr: http://vault.vault:8200
 
   podSecurityContext: {}
 
