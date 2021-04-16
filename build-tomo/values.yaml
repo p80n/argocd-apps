@@ -4,10 +4,9 @@ build-tomo:
     environment:
       githubSecret: vault:external/data/github#secret
       dockerToken: vault:external/data/docker#token
-      dockerUser: p80n
-    secret:
-    secretRef:
+      dockerUser: vault:external/data/docker#user
 
+  buildJobImage: p80n/build-tomo-job:latest
 
   replicaCount: 1
 
