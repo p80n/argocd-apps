@@ -4,5 +4,5 @@ version: 1.0
 apiVersion: v2
 dependencies:
   - name: build-tomo
-    version: 0.0.6
+    version: 0.0.7
     repository: https://p80n.github.io/build-tomo-helm
