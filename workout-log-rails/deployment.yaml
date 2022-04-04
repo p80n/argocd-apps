@@ -31,7 +31,7 @@ spec:
            port: 3000
         env:
         - name: RAILS_ENV
-          value: development
+          value: production
         resources:
           requests:
             memory: 256Mi
