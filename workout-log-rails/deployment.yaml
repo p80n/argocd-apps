@@ -20,7 +20,8 @@ spec:
       - name: workout-init
         image: workout:latest
         command: ['rm','-f','/app/tmp/pids/server.pid']
-        imagePullPolicy: IfNotPresent 
+      imagePullPolicy: IfNotPresent 
+      nodeName: vegeta
       containers:
       - name: workout
         image: workout:latest
